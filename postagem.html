@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="postApp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Postagem</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="index.js"></script>
+    <!-- <script src="postagem.js"></script> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+<body>
+
+    <main class="d-flex justify-content-center">
+        <section id="posts" class="post container d-flex flex-wrap text-center">
+            <div class="col-3 m-5" ng-controller="Post">
+            <div class="card h-100">
+                <img ng-src="https://api-rest-post-diegocandido.herokuapp.com{{ publicacoes.thumbImage }}" class="img card-img-top rounded" alt="PUBLICACAO">
+                <div class="card-body">
+                <h5 class="card-title fw-bold">{{ publicacoes.title }}</h5>
+                <strong class="p-2">{{ publicacoes.thumbImageAltText }}</strong>
+                <p class="card-text fs-6">{{ publicacoes.description }}</p>
+                <p class="car-text"><small class="text-body-secondary">{{ publicacoes.profileName }} {{ publicacoes.postDate }}</small></p>
+                </div>
+            </div>
+        </div>
+        </section>
+    </main>
+</body>
+</html>

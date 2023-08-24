@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 
-<html lang="pt-BR" ng-app="blog">
+<html lang="pt-BR" ng-app="myBlog">
 
 <head>
 <title>BLOG</title>
 <meta charset="utf-8">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+<script src="index.js"></script>
+<!-- <script src="postagem.js"></script> -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
-<script type="text/javascript" src="app.js"></script>
+<link rel="stylesheet" href="./layout/styles/style.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
 <body id="top">
 
@@ -71,21 +74,31 @@
   </section>
   <div id="pageintro" class="hoc clear"> 
     <article>
-      <p>AAAAAAAAA</p>
-      <h3 class="heading">AAAAAAAA</h3>
-      <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+      <p>Roberta Pires</p>
+      <h3 class="heading">BertaBlog</h3>
+      <p>Designer, Desenvolvedora back-end e front-end</p>
       <footer><a class="btn" href="#">CLIQUE AQUI</a></footer>
     </article>
   </div>
 </div>
 
 <div class="wrapper row3">
-  <main class="hoc container clear"> 
-
-
-
-
-    <div class="clear"></div>
+  <main class="container">
+    <div class="title">
+      <h3 class="fs-1 text-uppercase fw-bold text-center">Postagens</h3>
+    </div>
+    <section id="posts" class="post container d-flex flex-wrap text-center" ng-controller="Rest">
+        <div class="col-3 m-5" ng-repeat="publicacao in publicacoes">
+          <div class="card h-100">
+            <img ng-src="https://api-rest-post-diegocandido.herokuapp.com{{ publicacao.thumbImage }}" class="img card-img-top rounded" alt="PUBLICACAO">
+            <div class="card-body">
+              <h5 class="card-text">{{ publicacao.thumbImageAltText }}</h5>
+              <p class="card-title fw-bold fs-4">{{ publicacao.title }}</p>
+              <button class="btn btn-primary text-center text-white fw-bold" ng-click="detalhes($id)">Ler Mais</button>
+            </div>
+          </div>
+      </div>
+    </section>
   </main>
 </div>
 
@@ -93,28 +106,27 @@
   <section class="hoc container clear"> 
 
     <div class="sectiontitle">
-      <p class="nospace font-xs">Lorem Ipsum is simply dummy</p>
       <h6 class="heading">Curiosidades</h6>
     </div>
     <ul class="nospace group center">
       <li class="one_third first">
         <article><a href="#"><i class="fas fa-eraser fa-5x btmspace-50"></i></a>
-          <h6 class="heading">Trabalho</h6>
-          <p class="btmspace-30">Lorem Ipsum is simply dummy text of the printing and typesetting industry.  [&hellip;]</p>
+          <h6 class="heading">Estudo</h6>
+          <p class="btmspace-30">Sou aluna da Escola Técnica Estadual Monteiro Lobato.  [&hellip;]</p>
           <footer><a class="btn" href="#">Leia Mais</a></footer>
         </article>
       </li>
       <li class="one_third">
         <article><a href="#"><i class="fas fa-chess-bishop fa-5x btmspace-50"></i></a>
           <h6 class="heading">Estratégias</h6>
-          <p class="btmspace-30">Lorem Ipsum is simply dummy text of the printing and typesetting industry. [&hellip;]</p>
+          <p class="btmspace-30">Pretendo estar em alto nível de desenvolvedora até 2025. [&hellip;]</p>
           <footer><a class="btn" href="#">Leia Mais</a></footer>
         </article>
       </li>
       <li class="one_third">
         <article><a href="#"><i class="fas fa-coins fa-5x btmspace-50"></i></a>
-          <h6 class="heading">Ganhos</h6>
-          <p class="btmspace-30">Lorem Ipsum is simply dummy text of the printing and typesetting industry.  [&hellip;]</p>
+          <h6 class="heading">Linguagens</h6>
+          <p class="btmspace-30">HTML5, CSS3, JavaScript, Java, ReactJs e NodeJs  [&hellip;]</p>
           <footer><a class="btn" href="#">Leia Mais</a></footer>
         </article>
       </li>
@@ -127,7 +139,6 @@
   <section class="hoc container clear"> 
 
     <div class="sectiontitle">
-      <p class="nospace font-xs">Lorem Ipsum is simply </p>
       <h6 class="heading">Alcalces</h6>
     </div>
     <ul id="stats" class="nospace group">
@@ -156,17 +167,16 @@
   <section id="testimonials" class="hoc container clear"> 
 
     <div class="sectiontitle">
-      <p class="nospace font-xs">At ante morbi consequat lobortis</p>
       <h6 class="heading">inspirações</h6>
     </div>
     <article class="one_half first"><img src="./images/Screenshot_1.png" alt="">
-      <blockquote>Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum is simply dummy text of the printing and typesetting industry. </blockquote>
-      <h6 class="heading">Fulano de Tal</h6>
-      <em>Lorem Ipsum is simply</em></article>
+      <blockquote>Se algo é importante o suficiente, você deve tentar. Mesmo se o resultado provável for o fracasso. </blockquote>
+      <h6 class="heading">Elon Musk</h6>
+    </article>
     <article class="one_half"><img src="./images/Screenshot_2.png" alt="">
-      <blockquote>Pellentesque et ipsum mattis ipsum pellentesque pretium proin rutrum turpis non accumsan aliquet odio magna luctus neque in adipiscing mi odio ac felis sed mattis enim quis ipsum.</blockquote>
-      <h6 class="heading">Outro fulano</h6>
-      <em>Lorem Ipsum is simply </em></article>
+      <blockquote>O caminho do CEO não deve ser por meio do escritório do CFO e nem no departamento de marketing.</blockquote>
+      <h6 class="heading">Elon Musk</h6>
+    </article>
 
   </section>
 </div>
@@ -185,14 +195,16 @@
         <li><a class="faicon-twitter" href="#"><i class="fab fa-twitter"></i></a></li>
         <li><a class="faicon-vk" href="#"><i class="fab fa-vk"></i></a></li>
       </ul>
-      <p class="nospace">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+      <p class="nospace">Redes socias para me seguirem... </p>
     </div>
 
     <hr class="btmspace-50">
 
-    <div class="one_quarter first">
-      <h6 class="heading">Lorem Ipsum is simply dummy</h6>
-      <p class="nospace btmspace-15">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </p>
+
+    <section style="margin: 3rem; display: flex; justify-content: center;">
+    <div class="one_quarter first" style="margin: 3rem; text-align: center;">
+      <h6 class="heading">Entre em contato</h6>
+      <p class="nospace btmspace-15">Qual sua dúvida ou esclarecimento? </p>
       <form action="#" method="post">
         <fieldset>
           <legend>Newsletter:</legend>
@@ -202,40 +214,24 @@
         </fieldset>
       </form>
     </div>
-    <div class="one_quarter">
-      <h6 class="heading">Lorem Ipsum is simply </h6>
+    <div class="one_quarter" style="margin: 3rem; text-align: center;">
+      <h6 class="heading">Outros Conteúdos </h6>
       <ul class="nospace linklist">
         <li>
           <article>
-            <p class="nospace btmspace-10"><a href="#">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </a></p>
-            <time class="block font-xs" datetime="2045-04-06">Friday, 6<sup>th</sup> April 2045</time>
+            <p class="nospace btmspace-10"><a href="#">Como é meu cotidiano no CIMOL </a></p>
+            <time class="block font-xs" datetime="2045-04-06">Friday, 6<sup>th</sup> April 2022</time>
           </article>
         </li>
         <li>
           <article>
-            <p class="nospace btmspace-10"><a href="#">Lorem Ipsum is simply dummy text of the printing and typesetting industry. </a></p>
-            <time class="block font-xs" datetime="2045-04-05">Thursday, 5<sup>th</sup> April 2045</time>
+            <p class="nospace btmspace-10"><a href="#">Meus amigos e família </a></p>
+            <time class="block font-xs" datetime="2045-04-05">Thursday, 5<sup>th</sup> April 2023</time>
           </article>
         </li>
       </ul>
     </div>
-    <div class="one_quarter">
-      <h6 class="heading">Vel condimentum auctor</h6>
-      <ul class="nospace linklist">
-        <li><a href="#">Hendrerit id lacus praesent</a></li>
-        <li><a href="#">Ullamcorper risus gravida</a></li>
-        <li><a href="#">Suscipit tempor turpis</a></li>
-        <li><a href="#">Pede dictum ipsum vel auctor</a></li>
-        <li><a href="#">Leo est tincidunt est sed</a></li>
-      </ul>
-    </div>
-    <div class="one_quarter">
-      <h6 class="heading">Nunc sapien varius</h6>
-      <ul class="nospace clear latestimg">
-
-      </ul>
-    </div>
-
+    </section>
   </footer>
 </div>
 
